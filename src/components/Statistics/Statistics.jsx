@@ -1,25 +1,30 @@
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Notification from '../Notification/Notification';
 import { StatListItem } from './Statistics.styled';
 import { notificationMsg } from '../../constants';
 
-const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
-  return (
-    <>
-      {total ? (
-        <ul>
-          <StatListItem>Good: {good}</StatListItem>
-          <StatListItem>Neutral: {neutral}</StatListItem>
-          <StatListItem>Bad: {bad}</StatListItem>
-          <StatListItem>Total: {total}</StatListItem>
-          <StatListItem>Positive feedback: {positivePercentage}%</StatListItem>
-        </ul>
-      ) : (
-        <Notification message={notificationMsg} />
-      )}
-    </>
-  );
-};
+class Statistics extends Component {
+  render() {
+    return (
+      <>
+        {this.props.total ? (
+          <ul>
+            <StatListItem>Good: {this.props.good}</StatListItem>
+            <StatListItem>Neutral: {this.props.neutral}</StatListItem>
+            <StatListItem>Bad: {this.props.bad}</StatListItem>
+            <StatListItem>Total: {this.props.total}</StatListItem>
+            <StatListItem>
+              Positive feedback: {this.props.positivePercentage}%
+            </StatListItem>
+          </ul>
+        ) : (
+          <Notification message={notificationMsg} />
+        )}
+      </>
+    );
+  }
+}
 
 Statistics.propTypes = {
   good: PropTypes.number.isRequired,
