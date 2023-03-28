@@ -5,4 +5,4 @@ export const sectionTitles = {
   statistics: 'Statistics',
 };
 
-export const notificationMsg = 'No feedback given';
+export const notificationMsg = 'No feedback given :(';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 import Section from './Section/Section';
@@ -6,14 +6,14 @@ import Statistics from './Statistics/Statistics';
 
 import { feedbackOptions, sectionTitles } from '../constants';
 
-const App = () => {
-  const initState = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
+const INIT_STATE = {
+  good: 0,
+  neutral: 0,
+  bad: 0,
+};
 
-  const [state, setState] = useState(initState);
+const App = () => {
+  const [state, setState] = useState(INIT_STATE);
 
   const feedbackHandler = option => {
     setState(prevState => ({
@@ -28,9 +28,9 @@ const App = () => {
   };
 
   const countPositiveFeedbackPercentage = () => {
-    const { good } = state;
     const total = countTotalFeedback();
-    return total ? Math.round((good / total) * 100) : 0;
+
+    return total ? Math.round((state.good / total) * 100) : 0;
   };
 
   return (
